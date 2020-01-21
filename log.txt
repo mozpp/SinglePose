@@ -1,0 +1,64 @@
+Eager execution mode:  False
+Eager execution mode:  False
+Eager execution mode:  False
+False
+Eager execution mode:  False
+/project/SinglePose/training/src
+Eager execution mode:  False
+/project/SinglePose/training/src
+Eager execution mode:  False
+/project/SinglePose/training/src/train.py
+Eager execution mode:  False
+/project/SinglePose/training/src/train.py
+False
+Eager execution mode:  False
+/project/SinglePose/training/src/train.py
+/project/SinglePose
+False
+Eager execution mode:  False
+/project/SinglePose/training/src/train.py
+/project/SinglePose
+False
+Eager execution mode:  False
+/project/SinglePose/training/src/train.py
+/project/SinglePose
+False
+Eager execution mode:  False
+preparing annotation from: /dataset/ai_challenge/jsonpath/ai_challenger_train.json
+loading annotations into memory...
+Done (t=0.22s)
+creating index...
+index created!
+imgIds size ==> 22446
+preparing annotation from: /dataset/ai_challenge/jsonpath/ai_challenger_valid.json
+loading annotations into memory...
+Done (t=0.04s)
+creating index...
+index created!
+imgIds size ==> 1500
+Start training...
+Eager execution mode:  False
+preparing annotation from: /dataset/ai_challenge/jsonpath/ai_challenger_train.json
+loading annotations into memory...
+Done (t=0.14s)
+creating index...
+index created!
+imgIds size ==> 22446
+preparing annotation from: /dataset/ai_challenge/jsonpath/ai_challenger_valid.json
+loading annotations into memory...
+Done (t=0.01s)
+creating index...
+index created!
+imgIds size ==> 1500
+Start training...
+loss=224996.719, l_l2=224996.719,l_sy=11826.438,l_ds=480.925,last_heat_loss=32082.105
+2020-01-13 08:47:16.648524: step 500, lr=0.001000, loss=1225.810, l_l2=1225.810,l_sy=2.944,l_ds=320.206,last_heat_loss=177.448 (46.0 examples/sec; 0.044 sec/batch)
+2020-01-13 08:47:42.920202: step 1000, lr=0.001000, loss=1120.322, l_l2=1120.322,l_sy=1.601,l_ds=493.699,last_heat_loss=159.795 (46.7 examples/sec; 0.043 sec/batch)
+2020-01-13 08:48:06.463686: step 1500, lr=0.001000, loss=1176.782, l_l2=1176.782,l_sy=1.531,l_ds=199.701,last_heat_loss=169.536 (47.3 examples/sec; 0.042 sec/batch)
+2020-01-13 08:48:28.660146: step 2000, lr=0.001000, loss=1242.658, l_l2=1242.658,l_sy=0.636,l_ds=202.470,last_heat_loss=178.435 (45.5 examples/sec; 0.044 sec/batch)
+2020-01-13 08:48:51.702462: step 2500, lr=0.001000, loss=1219.303, l_l2=1219.303,l_sy=1.754,l_ds=457.120,last_heat_loss=174.143 (47.1 examples/sec; 0.042 sec/batch)
+2020-01-13 08:49:13.558046: step 3000, lr=0.001000, loss=1159.697, l_l2=1159.697,l_sy=2.547,l_ds=386.383,last_heat_loss=165.490 (43.0 examples/sec; 0.047 sec/batch)
+2020-01-13 08:49:36.692543: step 3500, lr=0.001000, loss=1203.815, l_l2=1203.815,l_sy=1.255,l_ds=312.407,last_heat_loss=173.234 (46.5 examples/sec; 0.043 sec/batch)
+2020-01-13 08:49:58.688598: step 4000, lr=0.001000, loss=1242.239, l_l2=1242.239,l_sy=3.732,l_ds=352.834,last_heat_loss=180.226 (45.9 examples/sec; 0.044 sec/batch)
+2020-01-13 08:50:21.891027: step 4500, lr=0.001000, loss=1110.749, l_l2=1110.749,l_sy=3.164,l_ds=312.567,last_heat_loss=160.380 (43.6 examples/sec; 0.046 sec/batch)
+2020-01-13 08:50:44.237381: step 5000, lr=0.001000, loss=1178.887, l_l2=1178.887,l_sy=6.006,l_ds=444.530,last_heat_loss=168.826 (46.1 examples/sec; 0.043 sec/batch)
