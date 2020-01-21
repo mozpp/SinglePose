@@ -249,3 +249,4 @@ fabric.properties
 detect_my.py
 /tool_mo.py
 /training/trained
+training/src/log.txt
