@@ -49,7 +49,7 @@ def get_network_output_wh():
     return _network_w // _scale, _network_h // _scale
 
 
-def pose_random_scale(meta):
+def pose_random_scale(meta, SEG_MASK):
     scalew = random.uniform(0.8, 1.2)
     scaleh = random.uniform(0.8, 1.2)  #todo: 这里的超参数可以修改
     neww = int(meta.width * scalew)
@@ -71,10 +71,13 @@ def pose_random_scale(meta):
     meta.joint_list = adjust_joint_list
     meta.width, meta.height = neww, newh
     meta.img = dst
+    if SEG_MASK:
+        meta.mask = cv2.resize(meta.mask, (neww, newh), interpolation=cv2.INTER_AREA)
+
     return meta
 
 
-def pose_rotation(meta):
+def pose_rotation(meta, SEG_MASK):
     deg = random.uniform(-15.0, 15.0)  #TODO：超参数可修改
     img = meta.img
 
@@ -90,7 +93,10 @@ def pose_rotation(meta):
     newy = int(center[1] - newh * 0.5)
     # print(ret.shape, deg, newx, newy, neww, newh)
     img = ret[newy:newy + newh, newx:newx + neww]
-
+    if SEG_MASK:
+        ret_mask = cv2.warpAffine(meta.mask, rot_m, img.shape[1::-1], flags=cv2.INTER_AREA, borderMode=cv2.BORDER_CONSTANT)
+        mask = ret_mask[newy:newy + newh, newx:newx + neww]
+        meta.mask = mask
     # adjust meta data
     adjust_joint_list = []
     for joint in meta.joint_list:

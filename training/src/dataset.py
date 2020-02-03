@@ -24,6 +24,7 @@ import multiprocessing
 
 BASE = "/root/hdd"
 BASE_PATH = ""
+BASE_MASK_PATH = ""
 
 TRAIN_JSON = "ai_challenger_train.json"
 # VALID_JSON = "ai_challenger_train.json"
@@ -33,7 +34,7 @@ TRAIN_ANNO = None
 VALID_ANNO = None
 CONFIG = None
 
-
+SEG_MASK = False
 # todo: add multi task
 
 def set_config(config):
@@ -41,6 +42,9 @@ def set_config(config):
     CONFIG = config
     BASE = CONFIG['imgpath']
     BASE_PATH = CONFIG['datapath']
+    if SEG_MASK:
+        BASE_MASK_PATH = CONFIG['maskpath']
+
 
 
 def _parse_function(imgId, is_train, ann=None):
@@ -69,15 +73,19 @@ def _parse_function(imgId, is_train, ann=None):
     idx = img_meta['id']
 
     img_path = join(BASE, img_meta['file_name'])
+    if SEG_MASK:
+        mask_path = join(BASE_MASK_PATH, img_meta['file_name'])
+    else:
+        mask_path = None
     # print('img_path==>', is_train, img_path)
     # exit()
-    img_meta_data = CocoMetadata(idx, img_path, img_meta, img_anno, sigma=6.0)  # 加载图像和kp标注
+    img_meta_data = CocoMetadata(idx, img_path, img_meta, img_anno, sigma=6.0, mask_path=mask_path)  # 加载图像和kp标注
     # 先数据增强，再把kp标注转换为heatmap
-    img_meta_data = pose_random_scale(img_meta_data)
-    img_meta_data = pose_rotation(img_meta_data)
-    img_meta_data = pose_flip(img_meta_data)
-    img_meta_data = pose_resize_shortestedge_random(img_meta_data)
-    img_meta_data = pose_crop_random(img_meta_data)
+    img_meta_data = pose_random_scale(img_meta_data, SEG_MASK)
+    img_meta_data = pose_rotation(img_meta_data, SEG_MASK)
+    img_meta_data = pose_flip(img_meta_data, SEG_MASK) #todo:multi task1.22改到这里
+    img_meta_data = pose_resize_shortestedge_random(img_meta_data, SEG_MASK)
+    img_meta_data = pose_crop_random(img_meta_data, SEG_MASK)
 
     return pose_to_img(img_meta_data, imgId)
 

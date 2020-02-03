@@ -79,9 +79,11 @@ class CocoMetadata:
         nparr = np.fromstring(img_str, np.uint8)
         return cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-    def __init__(self, idx, img_path, img_meta, annotations, sigma):
+    def __init__(self, idx, img_path, img_meta, annotations, sigma, mask_path=None):
         self.idx = idx
         self.img = self.read_image(img_path)
+        if mask_path is not None:
+            self.mask = self.read_image(mask_path)
 
         # norm input
         self.img = self.img # / 255.
